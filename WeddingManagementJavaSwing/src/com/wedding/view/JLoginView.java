@@ -1,4 +1,4 @@
-package view;
+package com.wedding.view;
 
 import java.awt.BorderLayout;
 import java.awt.Button;

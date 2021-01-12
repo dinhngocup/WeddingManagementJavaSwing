@@ -45,5 +45,5 @@ public class APIConstant {
 		public static final String API_total_revenue = "http://localhost:8082/OOADWeddingBackendProject/totalrevenue";
 		public static final String API_month_revenue = "http://localhost:8082/OOADWeddingBackendProject/monthrevenue";
 		
-		public static final String API_login = "http://localhost:8082/WeddingManagementBackend/login";
+		public static final String API_login = "http://localhost:8082/OOADWeddingBackendProject/login";
 }
