@@ -31,26 +31,6 @@ public class JLoginView extends JFrame {
 		super.frameInit();
 		authenAccountService = new AuthenAccountServiceImpl();
 	}
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JLoginView frame = new JLoginView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public JLoginView() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,14 +67,17 @@ public class JLoginView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("username " + txt_username.getText());
 				System.out.println("password " + txt_password.getText());
+				setVisible(false);
+				JHomeView frame = new JHomeView();
+				frame.setVisible(true);
 				
-				String username =  txt_username.getText();
-				String password =  txt_password.getText();
-				
-				UserDTO user = authenAccountService.authenAccountLogin(username, password);
-				if (user != null) {
-					System.out.println("id " +  user.getUserID());
-				}
+//				String username =  txt_username.getText();
+//				String password =  txt_password.getText();
+//				
+//				UserDTO user = authenAccountService.authenAccountLogin(username, password);
+//				if (user != null) {
+//					System.out.println("id " +  user.getUserID());
+//				}
 
 			}
 		});
