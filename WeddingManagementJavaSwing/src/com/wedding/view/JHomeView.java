@@ -19,12 +19,11 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class JHomeView extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
-	private FoodService foodService;
 	
 	
 
@@ -33,7 +32,6 @@ public class JHomeView extends JFrame {
 	protected void frameInit() {
 		// TODO Auto-generated method stub
 		super.frameInit();
-		foodService = new FoodServiceImpl();
 	}
 
 
@@ -55,9 +53,9 @@ public class JHomeView extends JFrame {
 		service_panel.setBackground(Color.ORANGE);
 		service_panel.setBounds(121, 46, 613, 347);
 		contentPane.add(service_panel);
+		service_panel.setLayout(null);
 		
-		table = new JTable();
-		service_panel.add(table);
+		
 		
 		JPanel header = new JPanel();
 		header.setBackground(Color.DARK_GRAY);
@@ -86,24 +84,23 @@ public class JHomeView extends JFrame {
 		JLabel lblService = new JLabel("Service");
 		nav_service.add(lblService);
 		
-		JPanel food_panel = new JPanel();
-		food_panel.setBackground(Color.PINK);
-		food_panel.setBounds(121, 46, 613, 347);
-		contentPane.add(food_panel);
+	
 		
 		nav_food.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				food_panel.setVisible(true);
+				JFoodPanel food_panel = new JFoodPanel();
+				food_panel.setBounds(121, 46, 613, 347);
+				food_panel.GetFoods();
 				service_panel.setVisible(false);
-				List<Food> foods = foodService.getAllFood();
+				add(food_panel);
 			}
 		});
 		nav_service.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				service_panel.setVisible(true);
-				food_panel.setVisible(false);
+				//food_panel.setVisible(false);
 			}
 		});
 		
