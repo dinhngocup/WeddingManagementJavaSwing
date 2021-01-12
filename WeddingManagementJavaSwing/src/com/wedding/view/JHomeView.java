@@ -6,17 +6,37 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.wedding.model.Food;
+import com.wedding.service.FoodService;
+import com.wedding.serviceImpl.FoodServiceImpl;
+
 import javax.swing.JSplitPane;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
+
 import javax.swing.JTable;
 
 public class JHomeView extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private FoodService foodService;
+	
+	
+
+
+	@Override
+	protected void frameInit() {
+		// TODO Auto-generated method stub
+		super.frameInit();
+		foodService = new FoodServiceImpl();
+	}
+
+
 
 
 	/**
@@ -76,6 +96,7 @@ public class JHomeView extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				food_panel.setVisible(true);
 				service_panel.setVisible(false);
+				List<Food> foods = foodService.getAllFood();
 			}
 		});
 		nav_service.addMouseListener(new MouseAdapter() {
