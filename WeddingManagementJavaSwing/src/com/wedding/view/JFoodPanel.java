@@ -1,6 +1,8 @@
 package com.wedding.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,74 +13,133 @@ import com.wedding.service.FoodService;
 import com.wedding.serviceImpl.FoodServiceImpl;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JScrollBar;
+import javax.swing.ScrollPaneConstants;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 public class JFoodPanel extends JPanel {
 
 	private FoodService foodService;
 	private List<JFoodItem> foodItems;
+	private JPanel panel;
+	private JScrollPane scrollPane;
+	private JLabel lbl_title;
+	private JButton btn_add;
 	/**
 	 * Create the panel.
 	 */
+	Color btn_add_bg = new Color(147, 165, 172);
 	public JFoodPanel() {
-		setBackground(Color.PINK);
+		setBorder(null);
+		setBackground(Color.WHITE);
 		setLayout(null);
+		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBorder(null);
+		panel.setBounds(10, 48, 574, 300);
 		
-		JButton btn_add = new JButton("Add");
+		add(panel);
+		panel.setLayout(null);
+		
+		lbl_title = new JLabel("LIST FOOD");
+		lbl_title.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_title.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lbl_title.setBounds(219, 11, 163, 36);
+		add(lbl_title);
+//		JScrollPane scrollPane = new JScrollPane();
+//		scrollPane.setBounds(10, 48, 550, 300);
+//		
+//		//scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+//		scrollPane.setEnabled(true);
+//		scrollPane.setPreferredSize(new Dimension(100,100));
+//	    scrollPane.setVisible (true);
+//		scrollPane.setViewportView(panel);
+//		add(scrollPane);
+		
+		
+		
+//		JScrollBar scrollBar = new JScrollBar();
+//		scrollBar.setBounds(522, 0, 17, 300);
+//		scrollBar.setPreferredSize(new Dimension(500, 300));
+//		
+//		panel.add(scrollBar);
+		
+		btn_add = new JButton("Add");
+		
+		
+		btn_add.setForeground(Color.WHITE);
+
+		btn_add.setFont(new Font("Segoe UI", Font.BOLD, 17));
+		btn_add.setBackground(btn_add_bg);
+		btn_add.setBorderPainted(false);
+		btn_add.setBorder(new LineBorder(new Color(147, 165, 172), 7, true));
+		
 		btn_add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btn_add.setVisible(false);
 				AddFood();
 			}
 		});
-		btn_add.setBounds(514, 313, 89, 23);
+		btn_add.setBounds(495, 359, 89, 23);
 		add(btn_add);
 		foodService = new FoodServiceImpl();
 		foodItems = new ArrayList<JFoodItem>();
 	}
-	
+
 	public void GetFoods() {
 		List<Food> foods = foodService.getAllFood();
+		panel.setVisible(true);
+		btn_add.setVisible(true);
 		int index = 0;
 		foodItems.clear();
-		for(Food food : foods) {
+		for (Food food : foods) {
 			JFoodItem food_item = new JFoodItem(this, food);
 			System.out.println(food.getFoodName());
-			food_item.setBounds(42, 42 + 45 * index, 475, 45);
+			food_item.setBounds(0, 54 * index, 530, 54);
 			food_item.setVisible(true);
-			add(food_item);
+			panel.add(food_item);
 			foodItems.add(food_item);
-			index ++;
+			index++;
 		}
 	}
-	
+
 	public void GetFoodById(int id) {
-		for(JFoodItem foodItem : foodItems) {
-			foodItem.setVisible(false);
-			remove(foodItem);
-		}
-		foodItems.clear();
+		lbl_title.setText("UPDATE FOOD");
+		HideListFood();
 		List<Food> foods = foodService.getAllFood();
-		for(Food food : foods) {
-			if(food.getFoodID() == id) {
-				JFoodDetail foodDetail = new JFoodDetail(food);
-				foodDetail.setBounds(42,42,458,307);
+		for (Food food : foods) {
+			if (food.getFoodID() == id) {
+				JFoodDetail foodDetail = new JFoodDetail(this, food);
+				foodDetail.setBounds(10, 48, 574, 300);
 				foodDetail.setVisible(true);
 				add(foodDetail);
 				return;
 			}
 		}
 	}
-	
+
 	public void AddFood() {
-		for(JFoodItem foodItem : foodItems) {
-			foodItem.setVisible(false);
-			remove(foodItem);
-		}
-		foodItems.clear();
-		JFoodDetail foodDetail = new JFoodDetail();
-		foodDetail.setBounds(42,42,458,307);
+		lbl_title.setText("NEW FOOD");
+		HideListFood();
+		JFoodDetail foodDetail = new JFoodDetail(this);
+		foodDetail.setBounds(10, 48, 574, 300);
 		foodDetail.setVisible(true);
 		add(foodDetail);
 	}
-
+	public void HideListFood() {
+		for (JFoodItem foodItem : foodItems) {
+			foodItem.setVisible(false);
+			panel.remove(foodItem);
+		}
+		panel.setVisible(false);
+		btn_add.setVisible(false);
+		foodItems.clear();
+	}
 }

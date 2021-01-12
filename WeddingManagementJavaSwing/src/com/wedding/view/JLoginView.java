@@ -2,19 +2,17 @@ package com.wedding.view;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
-import org.mindrot.jbcrypt.BCrypt;
-
-import com.wedding.dto.UserDTO;
 import com.wedding.service.AuthenAccountService;
 import com.wedding.serviceImpl.AuthenAccountServiceImpl;
 
@@ -83,5 +81,8 @@ public class JLoginView extends JFrame {
 		});
 		button.setBounds(164, 158, 70, 22);
 		panel.add(button);
+		
+		
+		
 	}
 }
