@@ -23,6 +23,11 @@ public class JHomeView extends JFrame {
 	private JPanel contentPane;
 	private JPanel currentPane;
 	
+	private JPanel renderingBodyPane;
+	
+	// 1 is servicepanel- 2 is foodpanel
+//	private int typePanelIsRendering = 1;
+	
 
 
 	@Override
@@ -46,12 +51,6 @@ public class JHomeView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		/*Panel*/
-		JFoodPanel food_panel = new JFoodPanel();
-		food_panel.setBounds(152, 46, 594, 406);
-		food_panel.setVisible(false);
-		contentPane.add(food_panel);
 		
 		
 		/*util*/
@@ -129,17 +128,6 @@ public class JHomeView extends JFrame {
 		nav_service.setLayout(null);
 		nav_service.setBackground(nav_background);
 		nav_service.setBounds(0, 11, 142, 37);
-		nav_service.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				JPanel parent = (JPanel)e.getSource();
-				nav_service.setBackground(nav_background_hover);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				nav_service.setBackground(nav_background);
-			}
-		});
 		
 		nav.add(nav_service);
 		
@@ -193,28 +181,6 @@ public class JHomeView extends JFrame {
 		nav_food.setLayout(null);
 		nav_food.setBackground(nav_background);
 		nav_food.setBounds(0, 157, 142, 37);
-		nav_food.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				nav_food.setBackground(nav_background_hover);
-				
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				if(currentPane != nav_food) {
-					nav_food.setBackground(nav_background);
-				}
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(currentPane != nav_food) {
-					food_panel.setVisible(true);
-					food_panel.GetFoods();
-					nav_food.setBackground(nav_background_hover);
-					currentPane = nav_food;
-				}
-			}
-		});
 		nav.add(nav_food);
 		
 		JLabel icon_food = new JLabel("");
@@ -263,8 +229,89 @@ public class JHomeView extends JFrame {
 		
 		
 		
-	
 		
+		
+		nav_service.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				JPanel parent = (JPanel)e.getSource();
+				nav_service.setBackground(nav_background_hover);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if(currentPane != nav_service) {
+					nav_service.setBackground(nav_background);
+				}
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(currentPane != nav_service) {
+					remove(renderingBodyPane);
+					contentPane.remove(renderingBodyPane);
+					JServicePanel service_panel = new JServicePanel();
+					service_panel.setBounds(152, 46, 594, 406);
+					service_panel.setVisible(false);
+					contentPane.add(service_panel);
+					renderingBodyPane = service_panel;
+					
+					service_panel.setVisible(true);
+					service_panel.GetServices();
+					nav_service.setBackground(nav_background_hover);
+					nav_food.setBackground(nav_background);
+					currentPane = nav_service;
+				}
+			}
+		});
+		
+		
+		
+		
+		nav_food.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				nav_food.setBackground(nav_background_hover);
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if(currentPane != nav_food) {
+					nav_food.setBackground(nav_background);
+				}
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(currentPane != nav_food) {
+					
+					remove(renderingBodyPane);
+					contentPane.remove(renderingBodyPane);
+					JFoodPanel food_panel = new JFoodPanel();
+					food_panel.setBounds(152, 46, 594, 406);
+					food_panel.setVisible(false);
+					contentPane.add(food_panel);
+					renderingBodyPane = food_panel;
+					
+					food_panel.setVisible(true);
+					food_panel.GetFoods();
+					nav_food.setBackground(nav_background_hover);
+					nav_service.setBackground(nav_background);
+					currentPane = nav_food;
+				}
+			}
+		});
+		
+		
+		
+		
+	
+		JServicePanel service_panel = new JServicePanel();
+		service_panel.setBounds(152, 46, 594, 406);
+		service_panel.setVisible(false);
+		contentPane.add(service_panel);
+		service_panel.setVisible(true);
+		service_panel.GetServices();
+		nav_service.setBackground(nav_background_hover);
+		currentPane = nav_service;
+		renderingBodyPane = service_panel;
 	}
 	
 	public String convertDayToString(int day) {

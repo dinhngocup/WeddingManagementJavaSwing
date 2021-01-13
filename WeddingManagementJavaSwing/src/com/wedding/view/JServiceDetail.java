@@ -1,42 +1,39 @@
 package com.wedding.view;
 
-import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-import com.wedding.model.Food;
 import com.wedding.model.Service;
 
-import javax.swing.JButton;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.io.File;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-public class JFoodDetail extends JPanel {
+public class JServiceDetail extends JPanel {
+	
 	private JTextField txt_name;
 	private JTextField txt_price;
-	private JTextField txt_note;
 
-	private Food food;
+	private Service service;
 
 	Color btn_confirm_bg = new Color(147, 165, 172);
 
 	/**
 	 * Create the panel.
 	 */
-	public JFoodDetail() {
+	public JServiceDetail() {
 		setBackground(Color.WHITE);
 
 		setLayout(null);
 
 	}
 
-	public JFoodDetail(JFoodPanel food_panel, Food food) {
-		this.food = food;
+	public JServiceDetail(JServicePanel service_panel, Service service) {
+		this.service = service;
 		setBackground(Color.WHITE);
 		setLayout(null);
 		// setBounds(10, 48, 574, 300);
@@ -47,31 +44,20 @@ public class JFoodDetail extends JPanel {
 
 		JLabel lbl_price = new JLabel("Price");
 		lbl_price.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lbl_price.setBounds(98, 169, 60, 14);
+		lbl_price.setBounds(98, 113, 60, 14);
 		add(lbl_price);
 
-		JLabel lbl_note = new JLabel("Note");
-		lbl_note.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lbl_note.setBounds(98, 113, 60, 14);
-		add(lbl_note);
-
-		txt_name = new JTextField(food.getFoodName());
+		txt_name = new JTextField(service.getServiceName());
 		txt_name.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		txt_name.setBounds(232, 53, 249, 28);
 		add(txt_name);
 		txt_name.setColumns(10);
 
-		txt_price = new JTextField(String.valueOf(food.getFoodPrice()));
+		txt_price = new JTextField(String.valueOf(service.getServicePrice()));
 		txt_price.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		txt_price.setBounds(232, 163, 249, 26);
+		txt_price.setBounds(232, 106, 249, 26);
 		add(txt_price);
 		txt_price.setColumns(10);
-
-		txt_note = new JTextField(food.getFoodNote());
-		txt_note.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		txt_note.setBounds(232, 106, 249, 28);
-		add(txt_note);
-		txt_note.setColumns(10);
 
 		JButton btn_confirm = new JButton("OK");
 		btn_confirm.setForeground(Color.WHITE);
@@ -83,14 +69,13 @@ public class JFoodDetail extends JPanel {
 		btn_confirm.setBorder(new LineBorder(new Color(147, 165, 172), 7, true));
 		btn_confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Food foodUpdate = new Food();
-				foodUpdate.setFoodID(food.getFoodID());
-				foodUpdate.setFoodName(txt_name.getText());
-				int foodPrice = Integer.parseInt(txt_price.getText());
-				foodUpdate.setFoodPrice(foodPrice);
-				foodUpdate.setFoodNote(txt_note.getText());
-				food_panel.UpdateFood(foodUpdate);
-				food_panel.setVisible(true);
+				Service serviceUpdate = new Service();
+				serviceUpdate.setServiceID(service.getServiceID());
+				serviceUpdate.setServiceName(txt_name.getText());
+				int servicePrice = Integer.parseInt(txt_price.getText());
+				serviceUpdate.setServicePrice(servicePrice);
+				service_panel.UpdateService(serviceUpdate);
+				service_panel.setVisible(true);
 				setVisible(false);
 			}
 		});
@@ -104,8 +89,8 @@ public class JFoodDetail extends JPanel {
 		btn_cancel.setBounds(466, 220, 86, 23);
 		btn_cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				food_panel.GetFoods();
-				food_panel.setVisible(true);
+				service_panel.GetServices();
+				service_panel.setVisible(true);
 				setVisible(false);
 			}
 		});
@@ -113,7 +98,7 @@ public class JFoodDetail extends JPanel {
 
 	}
 
-	public JFoodDetail(JFoodPanel food_panel) {
+	public JServiceDetail(JServicePanel service_panel) {
 		setBackground(Color.WHITE);
 		setLayout(null);
 		// setBounds(10, 48, 574, 300);
@@ -124,13 +109,9 @@ public class JFoodDetail extends JPanel {
 
 		JLabel lbl_price = new JLabel("Price");
 		lbl_price.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lbl_price.setBounds(98, 169, 60, 14);
+		lbl_price.setBounds(98, 113, 60, 14);
 		add(lbl_price);
 
-		JLabel lbl_note = new JLabel("Note");
-		lbl_note.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lbl_note.setBounds(98, 113, 60, 14);
-		add(lbl_note);
 
 		txt_name = new JTextField();
 		txt_name.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -140,15 +121,9 @@ public class JFoodDetail extends JPanel {
 
 		txt_price = new JTextField();
 		txt_price.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		txt_price.setBounds(232, 163, 249, 26);
+		txt_price.setBounds(232, 106, 249, 26);
 		add(txt_price);
 		txt_price.setColumns(10);
-
-		txt_note = new JTextField();
-		txt_note.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		txt_note.setBounds(232, 106, 249, 28);
-		add(txt_note);
-		txt_note.setColumns(10);
 
 		JButton btn_confirm = new JButton("OK");
 		btn_confirm.setForeground(Color.WHITE);
@@ -160,13 +135,12 @@ public class JFoodDetail extends JPanel {
 		btn_confirm.setBorder(new LineBorder(new Color(147, 165, 172), 7, true));
 		btn_confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Food food = new Food();
-				food.setFoodName(txt_name.getText());
-				int foodPrice = Integer.parseInt(txt_price.getText());
-				food.setFoodPrice(foodPrice);
-				food.setFoodNote(txt_note.getText());
-				food_panel.AddFood(food);
-				food_panel.setVisible(true);
+				Service service = new Service();
+				service.setServiceName(txt_name.getText());
+				int servicePrice = Integer.parseInt(txt_price.getText());
+				service.setServicePrice(servicePrice);
+				service_panel.AddService(service);
+				service_panel.setVisible(true);
 				setVisible(false);
 			}
 		});
@@ -185,12 +159,11 @@ public class JFoodDetail extends JPanel {
 		btn_cancel.setBounds(466, 220, 86, 23);
 		btn_cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				food_panel.GetFoods();
-				food_panel.setVisible(true);
+				service_panel.GetServices();
+				service_panel.setVisible(true);
 				setVisible(false);
 			}
 		});
 		add(btn_cancel);
 	}
-
 }

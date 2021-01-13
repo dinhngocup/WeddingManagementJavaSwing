@@ -84,7 +84,7 @@ public class JFoodPanel extends JPanel {
 		btn_add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn_add.setVisible(false);
-				AddFood();
+				RenderAddFood();
 			}
 		});
 		btn_add.setBounds(495, 359, 89, 23);
@@ -101,7 +101,6 @@ public class JFoodPanel extends JPanel {
 		foodItems.clear();
 		for (Food food : foods) {
 			JFoodItem food_item = new JFoodItem(this, food);
-			System.out.println(food.getFoodName());
 			food_item.setBounds(0, 54 * index, 530, 54);
 			food_item.setVisible(true);
 			panel.add(food_item);
@@ -125,7 +124,7 @@ public class JFoodPanel extends JPanel {
 		}
 	}
 
-	public void AddFood() {
+	public void RenderAddFood() {
 		lbl_title.setText("NEW FOOD");
 		HideListFood();
 		JFoodDetail foodDetail = new JFoodDetail(this);
@@ -142,4 +141,29 @@ public class JFoodPanel extends JPanel {
 		btn_add.setVisible(false);
 		foodItems.clear();
 	}
+	
+	public void AddFood(Food food) {
+		if(food != null) {
+			foodService.addFood(food);
+			GetFoods();
+		}
+	}
+	
+	public void UpdateFood(Food food) {
+		if(food != null) {
+			System.out.println("aaaaaaaa " + food.getFoodID());
+			System.out.println("aaaaaaaa " + food.getFoodName());
+			System.out.println("aaaaaaaa " + food.getFoodPrice());
+			System.out.println("aaaaaaaa " + food.getFoodNote());
+			foodService.updateFood(food);
+			GetFoods();
+		}
+	}
+	
+	public void DeleteFood(int id) {
+		foodService.deleteFood(id);
+		HideListFood();
+		GetFoods();
+	}
+	
 }

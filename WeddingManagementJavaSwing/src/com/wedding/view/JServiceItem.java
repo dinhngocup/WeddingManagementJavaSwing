@@ -1,32 +1,31 @@
 package com.wedding.view;
 
-import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.UIManager;
-
-import com.wedding.model.Food;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.SwingConstants;
-import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-public class JFoodItem extends JPanel {
-	private JFoodPanel food_panel;
+import com.wedding.model.Service;
+
+public class JServiceItem extends JPanel {
+
+	private JServicePanel service_panel;
 	private int id;
 
 	/**
 	 * Create the panel.
 	 */
-	public JFoodItem(JFoodPanel food_panel, Food food) {
-		this.food_panel = food_panel;
-		this.id = food.getFoodID();
+	public JServiceItem(JServicePanel service_panel, Service service) {
+		this.service_panel = service_panel;
+		this.id = service.getServiceID();
 		setBackground(Color.WHITE);
 		setLayout(null);
 		
@@ -43,21 +42,14 @@ public class JFoodItem extends JPanel {
 		JLabel txt_name = new JLabel("New label");
 		txt_name.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		txt_name.setBounds(10, 15, 151, 25);
-		txt_name.setText(food.getFoodName());
+		txt_name.setText(service.getServiceName());
 		add(txt_name);
-
-		// Food Note
-		JLabel txt_note = new JLabel("New label");
-		txt_note.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		txt_note.setBounds(193, 15, 89, 24);
-		txt_note.setText(food.getFoodNote());
-		add(txt_note);
-
+		
 		// Food Price
 		JLabel txt_price = new JLabel("New label");
 		txt_price.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		txt_price.setBounds(307, 15, 89, 25);
-		txt_price.setText(String.valueOf(food.getFoodPrice()));
+		txt_price.setBounds(250, 15, 89, 25);
+		txt_price.setText(String.valueOf(service.getServicePrice()));
 		add(txt_price);
 
 
@@ -71,7 +63,7 @@ public class JFoodItem extends JPanel {
 		btn_delete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				food_panel.DeleteFood(id);
+				service_panel.DeleteService(id);
 			}
 		});
 		add(btn_delete);
@@ -89,7 +81,7 @@ public class JFoodItem extends JPanel {
 		btn_edit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				food_panel.GetFoodById(food.getFoodID());
+				service_panel.GetServiceById(service.getServiceID());
 			}
 		});
 		btn_edit.setBounds(418, 13, 46, 32);
