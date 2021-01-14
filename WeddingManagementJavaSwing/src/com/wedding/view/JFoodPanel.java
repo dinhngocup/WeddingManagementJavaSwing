@@ -12,6 +12,8 @@ import com.wedding.model.Food;
 import com.wedding.service.FoodService;
 import com.wedding.serviceImpl.FoodServiceImpl;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
@@ -37,39 +39,37 @@ public class JFoodPanel extends JPanel {
 	 */
 	Color btn_add_bg = new Color(147, 165, 172);
 	public JFoodPanel() {
+		
+		
+		
 		setBorder(null);
 		setBackground(Color.WHITE);
 		setLayout(null);
-		panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setBorder(null);
-		panel.setBounds(10, 48, 574, 300);
-		
-		add(panel);
-		panel.setLayout(null);
 		
 		lbl_title = new JLabel("LIST FOOD");
 		lbl_title.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_title.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		lbl_title.setBounds(219, 11, 163, 36);
 		add(lbl_title);
-//		JScrollPane scrollPane = new JScrollPane();
-//		scrollPane.setBounds(10, 48, 550, 300);
-//		
-//		//scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-//		scrollPane.setEnabled(true);
-//		scrollPane.setPreferredSize(new Dimension(100,100));
-//	    scrollPane.setVisible (true);
-//		scrollPane.setViewportView(panel);
-//		add(scrollPane);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 48, 574,300);
+		
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setEnabled(true);
+		panel = new JPanel();
+		scrollPane.setViewportView(panel);
 		
 		
 		
-//		JScrollBar scrollBar = new JScrollBar();
-//		scrollBar.setBounds(522, 0, 17, 300);
-//		scrollBar.setPreferredSize(new Dimension(500, 300));
-//		
-//		panel.add(scrollBar);
+		panel.setBackground(Color.GRAY);
+		panel.setBorder(null);
+		panel.setLayout(null);
+		
+		
+		add(scrollPane);
+		
 		
 		btn_add = new JButton("Add");
 		
@@ -165,5 +165,8 @@ public class JFoodPanel extends JPanel {
 		HideListFood();
 		GetFoods();
 	}
-	
+	public void ShowDeleteDialog() {
+		JDialog deleteDialog = new JDialog();
+		add(deleteDialog);
+	}
 }

@@ -1,5 +1,6 @@
 package com.wedding.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Reservation {
@@ -25,6 +26,8 @@ public class Reservation {
 
 	public Reservation() {
 		super();
+		listFoodID = new ArrayList<Integer>();
+		listServiceReservation = new ArrayList<ServicePair>();
 		// TODO Auto-generated constructor stub
 	}
 
