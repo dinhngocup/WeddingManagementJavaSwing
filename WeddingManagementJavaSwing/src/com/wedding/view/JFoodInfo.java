@@ -17,6 +17,7 @@ public class JFoodInfo extends JPanel {
 	 * Create the panel.
 	 */
 	public JFoodInfo(JThirdStepReservation panel, Food food) {
+		setBackground(Color.WHITE);
 		
 		Color item_border = new Color(222, 226, 230);
 		
@@ -43,6 +44,7 @@ public class JFoodInfo extends JPanel {
 		
 		
 		JRadioButton btn = new JRadioButton("");
+		btn.setBackground(Color.WHITE);
 		btn.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btn.setBounds(416, 9, 21, 21);
 		add(btn);
@@ -52,9 +54,9 @@ public class JFoodInfo extends JPanel {
 	        public void actionPerformed(ActionEvent e) {
 	           if(e.getSource() == btn){
 	        	   if(btn.isSelected())
-	        		   panel.AddFood(food.getFoodID());
+	        		   panel.AddFood(food);
 	        	   else
-	        		   panel.RemoveFood(food.getFoodID());
+	        		   panel.RemoveFood(food);
 	           }
 	        }
 	    });

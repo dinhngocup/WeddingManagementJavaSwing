@@ -15,6 +15,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.border.LineBorder;
 
 import com.wedding.model.Lobby;
 import com.wedding.model.Reservation;
@@ -45,11 +46,14 @@ public class JFirstStepReservation extends JPanel {
 		txt_wedding_date.setColumns(10);
 
 		JRadioButton btn_shift_1 = new JRadioButton("Afternoon");
+		btn_shift_1.setBackground(Color.WHITE);
 		btn_shift_1.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		btn_shift_1.setBounds(177, 40, 92, 23);
+		btn_shift_1.setSelected(true);
 		add(btn_shift_1);
 
 		JRadioButton btn_shift_2 = new JRadioButton("Evening");
+		btn_shift_2.setBackground(Color.WHITE);
 		btn_shift_2.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		btn_shift_2.setBounds(271, 40, 77, 23);
 		add(btn_shift_2);
@@ -66,6 +70,10 @@ public class JFirstStepReservation extends JPanel {
 		group_lobby = new ButtonGroup();
 		
 		JButton btn_filter = new JButton("Filter");
+		btn_filter.setForeground(Color.WHITE);
+		btn_filter.setBackground(new Color(147, 165, 172));
+		btn_filter.setBorderPainted(false);
+		btn_filter.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		btn_filter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				listLobby.clear();
@@ -105,7 +113,7 @@ public class JFirstStepReservation extends JPanel {
 			}
 	}
 	public void SetLobbyID(int lobbyID) {
-		System.out.println(lobbyID);
+		//System.out.println(lobbyID);
 		reservation.setLobbyID(lobbyID);
 	}
 	

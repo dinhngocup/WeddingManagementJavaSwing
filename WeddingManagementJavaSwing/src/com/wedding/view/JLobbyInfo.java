@@ -53,6 +53,7 @@ public class JLobbyInfo extends JPanel {
 		add(txt_min_price);
 		
 		btn = new JRadioButton("");
+		btn.setBackground(Color.WHITE);
 		btn.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btn.setBounds(428, 7, 21, 23);
 		add(btn);

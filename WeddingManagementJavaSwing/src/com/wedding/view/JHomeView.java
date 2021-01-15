@@ -22,7 +22,7 @@ public class JHomeView extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel currentPane;
-
+private JHomeView homePanel;
 	private JPanel renderingBodyPane;
 
 	// 1 is servicepanel- 2 is foodpanel
@@ -38,6 +38,7 @@ public class JHomeView extends JFrame {
 	 * Create the frame.
 	 */
 	public JHomeView() {
+		homePanel = this;
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 481);
@@ -294,9 +295,9 @@ public class JHomeView extends JFrame {
 
 					remove(renderingBodyPane);
 					contentPane.remove(renderingBodyPane);
-					JReservationPanel reservation_panel = new JReservationPanel();
-					reservation_panel.setBounds(152, 46, 594, 406);
+					JReservationPanel reservation_panel = new JReservationPanel(homePanel);
 					reservation_panel.setVisible(false);
+					reservation_panel.setBounds(152, 46, 594, 406);
 					contentPane.add(reservation_panel);
 					renderingBodyPane = reservation_panel;
 
@@ -356,5 +357,15 @@ public class JHomeView extends JFrame {
 			return "Sunday";
 		}
 		return null;
+	}
+	public void NewReservation() {
+		remove(renderingBodyPane);
+		contentPane.remove(renderingBodyPane);
+		JReservationPanel reservation_panel = new JReservationPanel(homePanel);
+		reservation_panel.setBounds(152, 46, 594, 406);
+		contentPane.add(reservation_panel);
+		renderingBodyPane = reservation_panel;
+
+		reservation_panel.setVisible(true);
 	}
 }

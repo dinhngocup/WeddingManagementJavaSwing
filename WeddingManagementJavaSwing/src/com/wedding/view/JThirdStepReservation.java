@@ -39,20 +39,26 @@ public class JThirdStepReservation extends JPanel {
 
 	}
 
-	public void AddFood(int foodID) {
+	public void AddFood(Food food) {
 		List<Integer> listFood = reservation.getListFoodID();
-		listFood.add(foodID);
-		//System.out.println(reservation.getListFoodID().size());
+		listFood.add(food.getFoodID());
+		int tablePrice = reservation.getTablePrice();
+		tablePrice = tablePrice + food.getFoodPrice();
+		reservation.setTablePrice(tablePrice);
+		//System.out.println("table price" + reservation.getTablePrice());
 	}
 
-	public void RemoveFood(int foodID) {
+	public void RemoveFood(Food food) {
 		List<Integer> listFoodID = reservation.getListFoodID();
 		for (int i = 0; i < listFoodID.size(); i++) {
-			if (listFoodID.get(i) == foodID)
+			if (listFoodID.get(i) == food.getFoodID()) {
 				listFoodID.remove(i);
-
+				int tablePrice = reservation.getTablePrice();
+				tablePrice = tablePrice - food.getFoodPrice();
+				reservation.setTablePrice(tablePrice);
+				//System.out.println("table price" + reservation.getTablePrice());
+				break;
+			}
 		}
-		//reservation.getListFoodID().remove(foodID);
-		//System.out.println(reservation.getListFoodID().size());
 	}
 }
