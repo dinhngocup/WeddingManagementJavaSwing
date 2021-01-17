@@ -52,23 +52,14 @@ public class JFoodPanel extends JPanel {
 		lbl_title.setBounds(219, 11, 163, 36);
 		add(lbl_title);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 48, 574,300);
-		
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setEnabled(true);
 		panel = new JPanel();
-		scrollPane.setViewportView(panel);
-		
-		
-		
-		panel.setBackground(Color.GRAY);
+		panel.setBackground(Color.WHITE);
 		panel.setBorder(null);
+		panel.setBounds(10, 48, 574, 300);
+		
+		add(panel);
 		panel.setLayout(null);
 		
-		
-		add(scrollPane);
 		
 		
 		btn_add = new JButton("Add");

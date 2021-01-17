@@ -87,6 +87,7 @@ private JHomeView homePanel;
 		JLabel lbl_day = new JLabel("");
 
 		lbl_day.setText(convertDayToString(date.getDay()));
+		System.out.println(date.getDay());
 		lbl_day.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		lbl_day.setBounds(377, 27, 62, 14);
 		header.add(lbl_day);
@@ -353,7 +354,7 @@ private JHomeView homePanel;
 			return "Friday";
 		case 7:
 			return "Saturday";
-		case 8:
+		case 0:
 			return "Sunday";
 		}
 		return null;

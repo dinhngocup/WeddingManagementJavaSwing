@@ -21,6 +21,8 @@ import com.wedding.model.Lobby;
 import com.wedding.model.Reservation;
 import com.wedding.service.LobbyService;
 import com.wedding.serviceImpl.LobbyServiceImpl;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class JFirstStepReservation extends JPanel {
 	private List<Lobby> listLobby;
@@ -40,6 +42,25 @@ public class JFirstStepReservation extends JPanel {
 
 		DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
 		JFormattedTextField txt_wedding_date = new JFormattedTextField(format);
+		txt_wedding_date.setForeground(Color.GRAY);
+		txt_wedding_date.setText("yyyy-mm-dd");
+		txt_wedding_date.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (txt_wedding_date.getText().equals("yyyy-mm-dd")) {
+					txt_wedding_date.setText("");
+					txt_wedding_date.setForeground(Color.BLACK);
+		        }
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if (txt_wedding_date.getText() == null) {
+					txt_wedding_date.setForeground(Color.GRAY);
+					txt_wedding_date.setText("yyyy-mm-dd");
+		        }
+			}
+		});
+		txt_wedding_date.setToolTipText("yyyy/mm/dd");
 		txt_wedding_date.setFont(new Font("Segoe UI", Font.PLAIN, 13));
 		txt_wedding_date.setBounds(23, 41, 134, 20);
 		add(txt_wedding_date);
