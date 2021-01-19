@@ -366,7 +366,8 @@ private JHomeView homePanel;
 		reservation_panel.setBounds(152, 46, 594, 406);
 		contentPane.add(reservation_panel);
 		renderingBodyPane = reservation_panel;
-
+		repaint();
+		setVisible(true);
 		reservation_panel.setVisible(true);
 	}
 }

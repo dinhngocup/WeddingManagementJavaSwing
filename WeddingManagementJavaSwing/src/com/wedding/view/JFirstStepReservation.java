@@ -106,12 +106,15 @@ public class JFirstStepReservation extends JPanel {
 				listLobby = lobbyService.checkLobby(txt_wedding_date.getText(), shift);
 				int index = 0;
 				for (Lobby lobby : listLobby) {
-					//System.out.println(lobby.getLobbyName());
+					System.out.println(lobby.getLobbyName());
 					JLobbyInfo lobby_item = new JLobbyInfo(panel, lobby);
 					group_lobby.add(lobby_item.btn);
 					lobby_item.setBounds(23, 85 + 39 * index, 455, 39);
-					panel.add(lobby_item);
+					add(lobby_item);
+					lobby_item.setVisible(true);
 					lobbyItems.add(lobby_item);
+					panel.repaint();
+					panel.setVisible(true);
 					index++;
 				}
 				reservation.setWeddingDate(txt_wedding_date.getText());

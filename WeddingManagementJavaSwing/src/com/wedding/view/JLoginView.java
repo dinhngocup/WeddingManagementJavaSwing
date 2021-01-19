@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -25,7 +26,7 @@ import com.wedding.serviceImpl.AuthenAccountServiceImpl;
 public class JLoginView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txt_password;
+	private JPasswordField  txt_password;
 	private JTextField txt_username;
 	private AuthenAccountService authenAccountService;
 
@@ -75,7 +76,7 @@ public class JLoginView extends JFrame {
 		lblNewLabel.setBounds(80, 115, 103, 14);
 		panel.add(lblNewLabel);
 
-		txt_password = new JTextField();
+		txt_password = new JPasswordField ();
 		txt_password.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		txt_password.setBounds(205, 112, 114, 20);
 		panel.add(txt_password);
