@@ -14,22 +14,22 @@ public class APIConstant {
 		public static final String API_service_update = "http://localhost:8080/WeddingBackend/service/update";
 		
 		// RESTFUL of API lobby
-		public static final String API_lobby_get = "http://localhost:8082/OOADWeddingBackendProject/lobby";
-		public static final String API_lobby_add = "http://localhost:8082/OOADWeddingBackendProject/lobby/add";
-		public static final String API_lobby_delete = "http://localhost:8082/OOADWeddingBackendProject/lobby/delete";
-		public static final String API_lobby_update = "http://localhost:8082/OOADWeddingBackendProject/lobby/update";
-		public static final String API_lobby_check = "http://localhost:8082/OOADWeddingBackendProject/lobby/check";
+		public static final String API_lobby_get = "http://localhost:8080/WeddingBackend/lobby";
+		public static final String API_lobby_add = "http://localhost:8080/WeddingBackend/lobby/add";
+		public static final String API_lobby_delete = "http://localhost:8080/WeddingBackend/lobby/delete";
+		public static final String API_lobby_update = "http://localhost:8080/WeddingBackend/lobby/update";
+		public static final String API_lobby_check = "http://localhost:8080/WeddingBackend/lobby/check";
 		
 		// RESTFUL of API employee
-		public static final String API_employee_get = "http://localhost:8082/OOADWeddingBackendProject/employee";
-		public static final String API_employee_add = "http://localhost:8082/OOADWeddingBackendProject/employee/add";
-		public static final String API_employee_delete = "http://localhost:8082/OOADWeddingBackendProject/employee/delete";
-		public static final String API_employee_update = "http://localhost:8082/OOADWeddingBackendProject/employee/update";
-		public static final String API_employee_resetpassword = "http://localhost:8082/OOADWeddingBackendProject/employee/resetpassword";
-		public static final String API_employee_username = "http://localhost:8082/OOADWeddingBackendProject/employee/username";
+		public static final String API_employee_get = "http://localhost:8080/WeddingBackend/employee";
+		public static final String API_employee_add = "http://localhost:8080/WeddingBackend/employee/add";
+		public static final String API_employee_delete = "http://localhost:8080/WeddingBackend/employee/delete";
+		public static final String API_employee_update = "http://localhost:8080/WeddingBackend/employee/update";
+		public static final String API_employee_resetpassword = "http://localhost:8080/WeddingBackend/employee/resetpassword";
+		public static final String API_employee_username = "http://localhost:8080/WeddingBackend/employee/username";
 		
 		// RESTFUL of API change password
-		public static final String API_employee_changepassword = "http://localhost:8082/OOADWeddingBackendProject/updatepassword";
+		public static final String API_employee_changepassword = "http://localhost:8080/WeddingBackend/updatepassword";
 		
 		// RESTFUL of API typelobby
 		public static final String API_typelobby_get = "http://localhost:8082/OOADWeddingBackendProject/typelobby";
