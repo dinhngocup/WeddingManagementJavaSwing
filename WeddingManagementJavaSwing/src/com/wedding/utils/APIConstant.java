@@ -2,16 +2,16 @@ package com.wedding.utils;
 
 public class APIConstant {
 	// RESTFUL of API food
-		public static final String API_food_get = "http://localhost:8082/OOADWeddingBackendProject/food";
-		public static final String API_food_add = "http://localhost:8082/OOADWeddingBackendProject/food/add";
-		public static final String API_food_delete = "http://localhost:8082/OOADWeddingBackendProject/food/delete";
-		public static final String API_food_update = "http://localhost:8082/OOADWeddingBackendProject/food/update";
+		public static final String API_food_get = "http://localhost:8080/WeddingBackend/food";
+		public static final String API_food_add = "http://localhost:8080/WeddingBackend/food/add";
+		public static final String API_food_delete = "http://localhost:8080/WeddingBackend/food/delete";
+		public static final String API_food_update = "http://localhost:8080/WeddingBackend/food/update";
 		
 		// RESTFUL of API service
-		public static final String API_service_get = "http://localhost:8082/OOADWeddingBackendProject/service";
-		public static final String API_service_add = "http://localhost:8082/OOADWeddingBackendProject/service/add";
-		public static final String API_service_delete = "http://localhost:8082/OOADWeddingBackendProject/service/delete";
-		public static final String API_service_update = "http://localhost:8082/OOADWeddingBackendProject/service/update";
+		public static final String API_service_get = "http://localhost:8080/WeddingBackend/service";
+		public static final String API_service_add = "http://localhost:8080/WeddingBackend/service/add";
+		public static final String API_service_delete = "http://localhost:8080/WeddingBackend/service/delete";
+		public static final String API_service_update = "http://localhost:8080/WeddingBackend/service/update";
 		
 		// RESTFUL of API lobby
 		public static final String API_lobby_get = "http://localhost:8082/OOADWeddingBackendProject/lobby";
