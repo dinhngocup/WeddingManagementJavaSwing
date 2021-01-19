@@ -32,18 +32,18 @@ public class APIConstant {
 		public static final String API_employee_changepassword = "http://localhost:8080/WeddingBackend/updatepassword";
 		
 		// RESTFUL of API typelobby
-		public static final String API_typelobby_get = "http://localhost:8082/OOADWeddingBackendProject/typelobby";
+		public static final String API_typelobby_get = "http://localhost:8080/WeddingBackend/typelobby";
 		
 		// RESTFUL of API reservation
-		public static final String API_reservation = "http://localhost:8082/OOADWeddingBackendProject/reservation";
-		public static final String API_reservation_add = "http://localhost:8082/OOADWeddingBackendProject/reservation/add";
-		public static final String API_reservation_delete = "http://localhost:8082/OOADWeddingBackendProject/reservation/delete";
-		public static final String API_reservation_update = "http://localhost:8082/OOADWeddingBackendProject/reservation/update";
-		public static final String API_reservation_pay = "http://localhost:8082/OOADWeddingBackendProject/reservation/pay";
+		public static final String API_reservation = "http://localhost:8080/WeddingBackend/reservation";
+		public static final String API_reservation_add = "http://localhost:8080/WeddingBackend/reservation/add";
+		public static final String API_reservation_delete = "http://localhost:8080/WeddingBackend/reservation/delete";
+		public static final String API_reservation_update = "http://localhost:8080/WeddingBackend/reservation/update";
+		public static final String API_reservation_pay = "http://localhost:8080/WeddingBackend/reservation/pay";
 		
 		// RESTFUL of API total revenue
-		public static final String API_total_revenue = "http://localhost:8082/OOADWeddingBackendProject/totalrevenue";
-		public static final String API_month_revenue = "http://localhost:8082/OOADWeddingBackendProject/monthrevenue";
+		public static final String API_total_revenue = "http://localhost:8080/WeddingBackend/totalrevenue";
+		public static final String API_month_revenue = "http://localhost:8080/WeddingBackend/monthrevenue";
 		
-		public static final String API_login = "http://localhost:8082/OOADWeddingBackendProject/login";
+		public static final String API_login = "http://localhost:8080/WeddingBackend/login";
 }
